@@ -1,0 +1,63 @@
+<script setup>
+// import HelloWorld from './components/HelloWorld.vue'
+// import TheWelcome from './components/TheWelcome.vue'
+
+import {ref} from "vue";
+const count = ref(0);
+ 
+
+</script>
+
+<template>
+  <body>
+    <h4>The Current count is...</h4>
+    <h1>{{count}}</h1>
+    <button @click=count-->-</button>
+    <button @click=count++>+</button>
+ 
+    <!-- <script src="INDEX.JS"></script> -->
+ </body>
+</template>
+
+<style scoped>
+/* Style for the body */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 20px;
+
+}
+
+/* Style for the main heading */
+h1 {
+  color: #333;
+  margin: 20px 0;
+}
+
+/* Style for the subheading */
+h4 {
+  color: #666;
+}
+
+/* General button styling */
+button {
+  background-color: #008CBA; /* Blue background */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+button:hover {
+  background-color: #005f73;
+}
+</style>
