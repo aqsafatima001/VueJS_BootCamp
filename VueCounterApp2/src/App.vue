@@ -1,4 +1,5 @@
 <script setup>
+let count = 0;
 
 </script>
 
@@ -6,7 +7,9 @@
   <main>
     <div>
       <h4>The current Count is...</h4>
-      <h1>0</h1>
+      <h1>
+        {{count}}
+      </h1>
       <button>+</button>
       <button>-</button>
     </div>
