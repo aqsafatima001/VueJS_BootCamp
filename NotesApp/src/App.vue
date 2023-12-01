@@ -3,6 +3,7 @@
   import {ref} from "vue";
   const showModal = ref(false)
   const newNote = ref("")
+  const errorMessage = ref("")
   const notes = ref([])
 
   function getRandomColor() {
@@ -11,6 +12,11 @@
 }
 
   const addNote = () =>{
+
+    if(newNote.value.length < 10){
+      return errorMessage.value = "Note Needs to be 10 character or more"
+    }
+
     notes.value.push({
       id: Math.floor(Math.random()*1000000),
       text : newNote.value,
@@ -19,6 +25,7 @@
     })
     showModal.value = false
     newNote.value = ("")
+    errorMessage.value = ""
 
   }
 
@@ -29,27 +36,28 @@
   <main>
     <div v-if="showModal" class="over-lay">
       <div class="modal"> 
-        <textarea v-model="newNote" name="note" id="note" cols="30" rows="10"></textarea>
-        <button @click="addNote">Add Note</button>
+        <textarea v-model.trim="newNote" name="note" id="note" cols="30" rows="10"></textarea>
+        <p v-if="errorMessage">{{errorMessage}}</p>
+        <button @click="addNote">Add Note</button> 
         <button id="CloseButton" @click="showModal = false">Close</button>
       </div>
     </div>
     <div class="container"> 
       
       <header>
-        <h1>Notes {{showModal}}</h1>
+        <h1>Notes</h1>
         <button @click="showModal = true">+</button>
       </header>
 
       <div class="cards-container">
-        <div class="card">
-          <p class="main-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam consequatur voluptatem sunt ex accusamus, laudantium consequuntur blanditiis tempora.</p>
-          <p class="date">04/11/2023</p>
+
+        <div v-for="note in notes" 
+        :key="note.id "
+        class="card" :style="{backgroundColor: note.backgroundColor}">
+          <p class="main-text">{{note.text}}</p>
+          <p class="date">{{note.date.toLocaleDateString("en-US")}}</p>
         </div>
-        <div class="card">
-          <p class="main-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam consequatur voluptatem sunt ex accusamus, laudantium consequuntur blanditiis tempora.</p>
-          <p class="date">04/11/2023</p>
-        </div>
+
       </div>
     </div>
   </main>
@@ -142,5 +150,8 @@ header button{
 #CloseButton{
   background-color: rgb(180, 0, 0);
   margin-top: 7px;
+}
+.modal p{
+  color: red;
 }
 </style>
