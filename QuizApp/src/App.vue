@@ -19,9 +19,9 @@ watch(search , ()=>{
       <input v-model.trim="search" type="text" placeholder="Search...">
     </header>
     <div class="options-container">
-      <Card v-for="quiz in quizes" :key="quiz.id" :quiz="quiz"/>
-
-      <!-- <div v-for="quiz in quizes" :key="quiz.id" class="card">
+      <Card v-for="quiz in quizes" :key="quiz.id" :quiz="quiz" />
+<!-- 
+      <div v-for="quiz in quizes" :key="quiz.id" class="card">
         <img :src="quiz.img" alt="">
         <div class="card-text">
           <h2>{{ quiz.name }}</h2>
