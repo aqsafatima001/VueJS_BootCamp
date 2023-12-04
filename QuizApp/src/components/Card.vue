@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps } from "vue"
 const {quiz} = defineProps(['quiz'])
-console.log(props)
+// console.log(props)
 </script>
 
 <template>

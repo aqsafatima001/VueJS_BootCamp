@@ -8,7 +8,7 @@
 
 
 <template>
-    <div>
+    <div v-if="car">
         <h1>
             Contact Info
         </h1>
