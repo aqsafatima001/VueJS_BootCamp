@@ -1,7 +1,7 @@
 <script setup>
 
-import Card from "./components/Card.vue"
-import q from "./data/quizes.json"
+import Card from "../components/Card.vue"
+import q from "../data/quizes.json"
 import { ref , watch } from "vue"
 const quizes = ref(q)
 const search = ref("")
