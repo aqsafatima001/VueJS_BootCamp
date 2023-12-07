@@ -3,7 +3,9 @@
     "axios": "^1.6.2"
   },
   "scripts": {
-    "start": "concurrently \"npm run dev --prefix Frontend/LoginPage\" \" backend/backend.exe\""
+    "start": "concurrently \"npm run dev --prefix Frontend/LoginPage\" \"cd backend && go build && backend.exe\""
   }
+  
+  
 }
 
