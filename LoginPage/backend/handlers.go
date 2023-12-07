@@ -14,7 +14,7 @@ func serveLogin(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Serve the login page
-	http.ServeFile(w, r, "templates/login.html")
+	http.ServeFile(w, r, "../LoginPage/Frontend/LoginPage/src/App.vue")
 }
 
 func loginAPI(w http.ResponseWriter, r *http.Request) {

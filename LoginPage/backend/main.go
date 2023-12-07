@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	_ "github.com/denisenkom/go-mssqldb"
+	_ "github.com/gorilla/mux"
 )
 
 var db *sql.DB
