@@ -34,7 +34,7 @@ func main() {
 	http.HandleFunc("/api/login", loginAPI)
 
 	// Serve static files (CSS, JavaScript, etc.)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.Handle("/", http.FileServer(http.Dir("frontend-dist")))
 
 	fmt.Println("Server started on :8080")
 	http.ListenAndServe(":8080", nil)
