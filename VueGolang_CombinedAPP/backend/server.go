@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -19,8 +18,8 @@ type numsResponseData struct {
 	Div float64 `json:"div"`
 }
 
-func process(numsdata numbers) (numsResponseData) {
-	
+func process(numsdata numbers) numsResponseData {
+
 	var numsres numsResponseData
 	numsres.Add = numsdata.Num1 + numsdata.Num2
 	numsres.Mul = numsdata.Num1 * numsdata.Num2
@@ -35,7 +34,7 @@ func calc(w http.ResponseWriter, request *http.Request) {
 
 	var numsData numbers
 	var numsResData numsResponseData
-	
+
 	decoder.Decode(&numsData)
 
 	numsResData = process(numsData)
@@ -44,14 +43,13 @@ func calc(w http.ResponseWriter, request *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-    w.WriteHeader(http.StatusOK)
-    if err := json.NewEncoder(w).Encode(numsResData); err != nil {
-        panic(err)
-    }
+	w.WriteHeader(http.StatusOK)
+	if err := json.NewEncoder(w).Encode(numsResData); err != nil {
+		panic(err)
+	}
 }
 
 func main() {
 	http.HandleFunc("/", calc)
 	http.ListenAndServe(":8090", nil)
 }
-view rawserver.go hosted with ❤ by GitHub
