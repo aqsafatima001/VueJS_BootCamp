@@ -18,7 +18,7 @@
         </form>
 
         <div class="button-container">
-            <button class="SignUp-button">Create new Account</button>
+            <router-link to="/usersignup" class="SignUp-button">Create new Account</router-link>
         </div>
     </div>
 </template>
@@ -95,7 +95,9 @@ input[type="text"], input[type="password"] {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     margin-top: 25px;
-    width: 100%
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
   }
 
   hr{
