@@ -1,12 +1,9 @@
 <script setup>
-import UserLogin from "./components/UserLogin.vue"
+import {RouterView} from "vue-router"
 </script>
 
 <template>
- <UserLogin/>
+    <RouterView/>
 
 </template>
 
-<style scoped>
-
-</style>

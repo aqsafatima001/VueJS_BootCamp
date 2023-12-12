@@ -1,27 +1,26 @@
 <template>
-<div class="container">
+    <div class="container">
 
-    <h1>User Login</h1>
-    <form action="/api/login" method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
+        <h1>User Login</h1>
+        <form action="/api/login" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="button-container">
+                <button class="Login-button" type="submit">Log in</button>
+            </div>
+            <hr>
+        </form>
+
         <div class="button-container">
-            <button class="Login-button" type="submit">Log in</button>
+            <button class="SignUp-button">Create new Account</button>
         </div>
-        <hr>
-    </form>
-
-    <div class="button-container">
-        <button class="SignUp-button">Create new Account</button>
     </div>
-</div>
-
 </template>
 
 <style scoped>
@@ -46,6 +45,7 @@ h1 {
     text-align: center;
     font-family: sans-serif;
     font-weight: bold;
+    color:  #27496D;
 }
 
 label {
@@ -72,7 +72,7 @@ input[type="text"], input[type="password"] {
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    background-color: #053e7b; /* Change to your preferred background color */
+    background-color: #27496D; /* Change to your preferred background color */
     color: #fff; /* Change to your preferred text color */
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -90,7 +90,7 @@ input[type="text"], input[type="password"] {
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    background-color: green; /* Change to your preferred background color */
+    background-color: #7abdf4; /* Change to your preferred background color */
     color: #fff; /* Change to your preferred text color */
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
