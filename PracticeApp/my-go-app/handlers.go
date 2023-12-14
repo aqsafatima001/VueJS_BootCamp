@@ -65,18 +65,19 @@ func loginAPI(w http.ResponseWriter, r *http.Request) {
 
 	// Compare the provided password with the stored password
 	if password == storedPassword {
-		// Create a JSON response with a redirection URL
-		response := map[string]string{
-			"message":     "Login successful",
-			"redirectURL": "/clusterhome", // Replace with the URL of the next page
-		}
 
+		log.Printf("Password = ", password, "StoredPassword = ", storedPassword)
+
+		// Create a JSON response with a redirection URL
+		response := map[string]interface{}{
+			"success":     true, // Change this to true on successful login
+			"redirectURL": "/clusterhome",
+		}
 		jsonResponse, err := json.Marshal(response)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(jsonResponse)
 	} else {

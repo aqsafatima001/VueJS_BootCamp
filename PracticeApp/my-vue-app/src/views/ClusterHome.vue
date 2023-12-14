@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 
 import axios from 'axios';
 
@@ -17,7 +17,7 @@ export default {
         }
     }
 }
-</script>
+</script> -->
 
 <template>
     <!-- <div>

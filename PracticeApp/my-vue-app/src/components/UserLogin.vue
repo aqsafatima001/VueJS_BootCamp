@@ -1,5 +1,5 @@
 <script>
-import  axios from 'axios';
+import axios from 'axios';
 
 export default {
     data() {
@@ -12,20 +12,25 @@ export default {
     },
     methods: {
         submitLoginForm() {
+            console.log('Form data submitted:', this.formData); // Log form data
             axios.post('/api/login', this.formData)
+            console.log("after axios.post : ",this.formData)
                 .then(response => {
+                    console.log('Response from backend:', response.data); // Log response
                     // Check the response from the backend
-                    if (response.data.success) {
+                    if (response.data.success) { // Check if login was successful
+                        console.log('Login successful'); // Log successful login
                         // Redirect to /clusterhome on successful authentication
                         this.$router.push('/clusterhome');
                     } else {
+                        console.log('Login failed'); // Log failed login
                         // Handle authentication failure
                         alert('Authentication failed. Please check your credentials.');
                     }
                 })
                 .catch(error => {
                     // Handle errors
-                    console.error('Error during login', error);
+                    console.error('Error during login', error); // Log the error
                 });
         },
     },
@@ -38,17 +43,25 @@ export default {
 
         <h1>User Login</h1>
         <!-- <form action="/api/login" method="post"> -->
-        <form @submit.prevent="submitLoginForm" action="/api/login" method="post" >
+        <form @submit.prevent="submitLoginForm" action="/api/login" method="post">
             <div>
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" v-model="formData.username" required>
+                <!-- <input type="text" id="username" name="username" required aria-label="Username"> -->
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" v-model="formData.password" required>
+                <!-- <input type="password" id="password" name="password" required aria-label="Password"> -->
             </div>
+
+            <!-- <input type="text" id="username" name="username" v-model="formData.username" required>
+<input type="password" id="password" name="password" v-model="formData.password" required> -->
+
+            
             <div class="button-container">
-                <button @click="redirectToGolangBackend" class="Login-button" type="submit">Log in</button>
+                <button class="Login-button" type="submit">Log in</button>
+                <!-- <button @click="redirectToGolangBackend" class="Login-button" type="submit">Log in</button> -->
                 <!-- <router-link to="/clusterhome" class="Login-button">Log in</router-link> -->
             </div>
             <hr>
