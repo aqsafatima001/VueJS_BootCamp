@@ -16,7 +16,7 @@ const router  = createRouter({
             component: UserSignUp
         },
         {
-            path: "/api/login",
+            path: "/clusterhome",
             name: "Clusterhome",
             component: ClusterHome
         }

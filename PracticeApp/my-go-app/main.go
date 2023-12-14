@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	_ "github.com/denisenkom/go-mssqldb"
+	"github.com/gorilla/mux" // Import the Gorilla Mux router for routing
 )
 
 var db *sql.DB
@@ -29,14 +30,29 @@ func main() {
 
 	fmt.Println("Connected to the database!")
 
-	fs := http.FileServer(http.Dir("../my-vue-app/dist"))
-	http.Handle("/", fs)
+	// fs := http.FileServer(http.Dir("../my-vue-app/dist"))
+	// http.Handle("/", fs)
 
-	http.HandleFunc("/api/login", loginAPI)
+	router := mux.NewRouter() // Create a Gorilla Mux router
+	router.HandleFunc("/api/login", loginAPI).Methods(http.MethodPost)
+
+	// Serve your Vue.js frontend from "../my-vue-app/dist"
+	fs := http.FileServer(http.Dir("../my-vue-app/dist"))
+	router.PathPrefix("/").Handler(fs)
+
+	// Serve static files (CSS, JavaScript, etc.) from a "static" directory
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	http.HandleFunc("/successfulSignup", SignUp)
 
 	// Serve static files (CSS, JavaScript, etc.)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	// http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
+	// fmt.Println("Server started on :8080")
+	// http.ListenAndServe(":8080", nil)
+
+	// Start the HTTP server
 	fmt.Println("Server started on :8080")
+	http.Handle("/", router)
 	http.ListenAndServe(":8080", nil)
 }

@@ -8,7 +8,7 @@ import Footer from "../components/Footer.vue"
 
     <div class="container">
         <h1>User Sign Up</h1>
-        <form action="signup.php" method="post"> <!-- Replace 'signup.php' with your server-side script -->
+        <form action="/successfulSignup" method="post">
             <!-- User Information -->
             <div class="form-group">
                 <label for="username">Username:</label>
@@ -40,16 +40,18 @@ import Footer from "../components/Footer.vue"
             </div>
 
             <!-- Password Information -->
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <!-- Combine Password and Confirm Password in one line -->
             <div class="password-group">
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <label for="password">Password:</label>
+                    <input class="PasswordClass" type="password" id="password" name="password" required>
+                </div>
+
+                <!-- Combine Password and Confirm Password in one line -->
+                <div class="password-group">
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input class="PasswordClass" type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
                 </div>
             </div>
 
@@ -58,6 +60,38 @@ import Footer from "../components/Footer.vue"
                 <input type="email" id="email" name="email" required>
             </div>
             <!-- Add more user fields here -->
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+            </div>
+
+            <!-- Nationality -->
+            <div class="form-group">
+                <label for="nationality">Nationality:</label>
+                <input type="text" id="nationality" name="nationality" required>
+            </div>
+
+            <!-- CNIC Number -->
+            <div class="form-group">
+                <label for="cnicNumber">CNIC Number:</label>
+                <input type="text" id="cnicNumber" name="cnicNumber" required>
+            </div>
+
+            <!-- Passport Number -->
+            <div class="form-group">
+                <label for="passportNumber">Passport Number:</label>
+                <input type="text" id="passportNumber" name="passportNumber" required>
+            </div>
+
+            <!-- University -->
+            <div class="form-group">
+                <label for="university">University:</label>
+                <input type="text" id="university" name="university" required>
+            </div>
+
+
 
             <!-- Thesis Information -->
             <div class="form-group">
@@ -77,7 +111,7 @@ import Footer from "../components/Footer.vue"
                 <input type="checkbox" id="MySQL" name="MySQL"> MySQL<br>
                 <input type="checkbox" id="Zookeeper" name="Zookeeper"> Zookeeper<br>
                 <input type="checkbox" id="Hbase" name="Hbase"> Hbase<br>
-                <input type="checkbox" id="Kafka" name="Kafka"> KAfka<br>
+                <input type="checkbox" id="Kafka" name="Kafka"> Kafka<br>
                 <input type="checkbox" id="Flume" name="Flume"> Flume<br>
                 <input type="checkbox" id="Storm" name="Storm"> Storm<br>
                 <!-- Add more service checkboxes here -->
@@ -88,6 +122,13 @@ import Footer from "../components/Footer.vue"
                 <label for="xyzid">XYZ ID:</label>
                 <input type="text" id="xyzid" name="xyzid">
             </div>
+
+            <!-- Proof of Affiliation (Picture Upload) -->
+            <div class="form-group">
+                <label for="proofOfAffiliation">Proof of Affiliation (Picture):</label>
+                <input type="file" id="proofOfAffiliation" name="proofOfAffiliation" accept="image/*">
+            </div>
+
             <!-- Add more affiliation fields here -->
 
             <!-- Account Duration Information -->
@@ -100,7 +141,7 @@ import Footer from "../components/Footer.vue"
                 <input type="date" id="endDate" name="endDate">
             </div>
 
-            <button type="submit">Sign Up</button>
+            <button class="SignUp-Button" type="submit">Sign Up</button>
         </form>
     </div>
 
@@ -119,7 +160,7 @@ import Footer from "../components/Footer.vue"
 .container {
 
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 700px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -139,25 +180,9 @@ h1 {
 label {
     display: block;
     font-family: sans-serif;
-
 }
 
-/* Add styles for the password-group */
-.password-group {
-    display: flex;
-    justify-content: space-between;
-}
 
-/* Adjust the width of the password fields */
-.password-group .form-group {
-    flex: 1;
-    margin-right: 10px; /* Add margin between password and confirm password */
-}
-
-/* Set equal width for password and confirm password fields */
-.password-group .form-group:last-child {
-    margin-right: 0;
-}
 
 /* Styles for the form elements */
 .form-group {
@@ -168,6 +193,16 @@ label {
     display: flex;
     justify-content: space-between;
 }
+
+.password-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.password-group input[type="password"] {
+    width: 310px;
+}
+
 input[type="text"],
 input[type="email"],
 select,
@@ -197,8 +232,26 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+
+
+.SignUp-Button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7abdf4;
+    /* Change to your preferred background color */
+    color: #fff;
+    /* Change to your preferred text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 25px;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
 }
 
+.SignUp-Button:hover {
+    background-color: #0056b3;
+}
 </style>
